@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily Panchang Poster</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif}
+body{background:#f0e6d2;padding:12px;padding-bottom:30px}
+.topbar{text-align:center;margin-bottom:10px}
+.topbar h2{font-size:20px;color:#7a1f1f}
+.topbar p{font-size:13px;color:#555}
+.controls{background:#fff;padding:12px;border-radius:12px;display:flex;gap:8px;flex-wrap:wrap;justify-content:center;box-shadow:0 2px 10px #0001;margin-bottom:12px}
+.controls input{padding:9px;border:1px solid #ddd;border-radius:8px;font-size:14px;width:150px}
+.controls button{padding:10px 16px;border:none;border-radius:8px;font-weight:700;cursor:pointer}
+.btn-down{background:#1a7a2e;color:#fff}
+.btn-today{background:#7a1f1f;color:#fff}
+#poster{width:100%;max-width:480px;margin:0 auto;background:#fff8e7;border:3px solid #c9a227;border-radius:16px;overflow:hidden;box-shadow:0 8px 25px #0002}
+.poster-head{background:linear-gradient(135deg,#7a1f1f,#b03a2e);color:#fff;text-align:center;padding:14px 10px 8px}
+.poster-head h1{font-size:22px}
+.poster-head p{font-size:12px;opacity:.9;margin-top:3px}
+.god-box{height:230px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#fff;position:relative}
+.god-emoji{font-size:90px;line-height:1;filter:drop-shadow(0 5px 15px rgba(0,0,0,.4))}
+.god-box h2{font-size:24px;margin-top:8px;text-shadow:0 2px 8px #000}
+.god-box p{font-size:13px;opacity:.95;margin-top:4px}
+.date-strip{background:#c9a227;color:#3a2400;text-align:center;padding:9px;font-weight:800;font-size:16px}
+.grid{display:grid;grid-template-columns:1fr 1fr}
+.cell{padding:11px 12px;border-bottom:1px dashed #e6c87a}
+.cell:nth-child(odd){border-right:1px dashed #e6c87a}
+.cell small{font-size:11px;color:#8a6d00;text-transform:uppercase;letter-spacing:.5px}
+.cell b{font-size:15px;color:#222;display:block;margin-top:2px;line-height:1.3}
+.full{grid-column:span 2;background:#fff3c4;text-align:center}
+.full b{font-size:15px;color:#7a1f1f}
+.rahukal{background:#ffe8e8;text-align:center;padding:10px;font-size:13px;color:#7a1f1f;border-bottom:1px dashed #e6c87a}
+.rahukal b{color:#000}
+.footer{background:#7a1f1f;color:#fff;text-align:center;padding:12px 8px}
+.footer b{color:#ffdd66;font-size:15px}
+.footer p{font-size:13px;margin-top:3px}
+.footer span{font-size:12px;opacity:.9}
+.note{text-align:center;font-size:12px;color:#777;margin-top:10px}
+</style>
+</head>
+<body>
+
+<div class="topbar"><h2>🕉️ Daily Panchang Poster Maker</h2><p>Nav / Mobile badla - Poster var yeil</p></div>
+
+<div class="controls">
+  <input type="date" id="dateInput">
+  <input type="text" id="nameInput" value="Sushant Joshi" placeholder="Tumche Nav">
+  <input type="text" id="mobileInput" value="98765 43210" placeholder="Mobile Number">
+  <button class="btn-today" onclick="setToday()">Aajchi Tarikh</button>
+  <button class="btn-down" onclick="downloadPoster()">⬇️ POSTER DOWNLOAD</button>
+</div>
+
+<div id="poster">
+  <div class="poster-head">
+    <h1>॥ श्री पंचांग ॥</h1>
+    <p>दैनिक पंचांग • शुभ मुहूर्त • व्रत वैकल्य</p>
+  </div>
+
+  <div class="god-box" id="godBox">
+    <div class="god-emoji" id="godEmoji">🌸</div>
+    <h2 id="godName">श्री महालक्ष्मी</h2>
+    <p id="godDesc">Shukravar • Dhan • Samruddhi</p>
+  </div>
+
+  <div class="date-strip" id="dateStrip">...</div>
+
+  <div class="grid">
+    <div class="cell"><small>🌅 Suryoday</small><b id="vSunrise">06:48 AM</b></div>
+    <div class="cell"><small>🌇 Suryast</small><b id="vSunset">06:12 PM</b></div>
+    <div class="cell"><small>🌙 Tithi</small><b id="vTithi">-</b></div>
+    <div class="cell"><small>⭐ Nakshatra</small><b id="vNakshatra">-</b></div>
+    <div class="cell"><small>🧘 Yog</small><b id="vYog">-</b></div>
+    <div class="cell"><small>📿 Karan</small><b id="vKaran">-</b></div>
+    <div class="cell"><small>🕐 Rahukal</small><b id="vRahu">-</b></div>
+    <div class="cell"><small>✅ Abhijit Muhurat</small><b id="vAbhijit">12:00 - 12:45 PM</b></div>
+    <div class="cell full"><small>🕉️ Aajcha Vishes / Suvichar</small><b id="vSpecial">-</b></div>
+  </div>
+
+  <div class="rahukal">⚠️ <b>Rahukal madhe Shubh Karya Tala</b> • Gulika Kalam: <b id="vGulika">-</b></div>
+
+  <div class="footer">
+    <b>शुभेच्छुक • <span id="footerName">Sushant Joshi</span></b>
+    <p>📞 <span id="footerMobile">98765 43210</span> • Navi Mumbai</p>
+    <span>Roz Sakali 7 Vajta Panchang Sathi Follow Kara</span>
+  </div>
+</div>
+<p class="note">Khali scroll kara - Footer madhe Nav + Mobile disel. Download kelela poster purna disel.</p>
+
+<script>
+const GODS = {
+  0:{name:"श्री सूर्य देव",desc:"Ravivar • Surya Namaskar • Arogya",emoji:"☀️",bg:"linear-gradient(135deg,#ff9a00,#ff5e00)"},
+  1:{name:"श्री महादेव",desc:"Somvar • Om Namah Shivay",emoji:"🔱",bg:"linear-gradient(135deg,#1e3a5f,#3a6ea5)"},
+  2:{name:"श्री हनुमान",desc:"Mangalvar • Jai Bajrangbali",emoji:"🙏",bg:"linear-gradient(135deg,#d32f2f,#ff6f00)"},
+  3:{name:"श्री गणपती बाप्पा",desc:"Budhvar • Vakratunda Mahakaya",emoji:"🐘",bg:"linear-gradient(135deg,#e65100,#ff8f00)"},
+  4:{name:"श्री साई बाबा",desc:"Guruvar • Shraddha Saburi",emoji:"🕉️",bg:"linear-gradient(135deg,#5d4037,#8d6e63)"},
+  5:{name:"श्री महालक्ष्मी",desc:"Shukravar • Dhan • Samruddhi",emoji:"🌸",bg:"linear-gradient(135deg,#ad1457,#ec407a)"},
+  6:{name:"श्री शनि देव",desc:"Shanivar • Nyay • Karm",emoji:"⚖️",bg:"linear-gradient(135deg,#212121,#616161)"}
+};
+const RAHU = {0:"04:30 - 06:00 PM",1:"07:30 - 09:00 AM",2:"03:00 - 04:30 PM",3:"12:00 - 01:30 PM",4:"01:30 - 03:00 PM",5:"10:30 - 12:00 PM",6:"09:00 - 10:30 AM"};
+const GULIKA = {0:"03:00 - 04:30 PM",1:"01:30 - 03:00 PM",2:"12:00 - 01:30 PM",3:"10:30 - 12:00 PM",4:"09:00 - 10:30 AM",5:"07:30 - 09:00 AM",6:"06:00 - 07:30 AM"};
+
+const DATA = {
+ "2026-11-27":{tithi:"Margashirsh Shukla Saptami",nak:"Dhanishta",yog:"Vyatipata",karan:"Vanij",special:"Shukravar - Mahalaxmi Pujan • Shubh Divas"},
+ "2026-11-28":{tithi:"Ashtami",nak:"Shatabhisha",yog:"Variyan",karan:"Bav",special:"Shanivar - Shani Pujan"},
+ "2026-11-29":{tithi:"Navami",nak:"P. Bhadrapada",yog:"Parigha",karan:"Kaulav",special:"Ravivar - Surya Pujan"},
+ "2026-11-30":{tithi:"Dashami",nak:"U. Bhadrapada",yog:"Shiva",karan:"Gara",special:"Somvar - Mahadev"},
+ "2026-12-01":{tithi:"Margashirsh Shukla Ekadashi",nak:"Revati",yog:"Vyatipata",karan:"Vanij",special:"Mokshada Ekadashi • Gita Jayanti"},
+ "2026-12-02":{tithi:"Dwadashi",nak:"Ashwini",yog:"Variyan",karan:"Bav",special:"Shubh Divas - Karya Siddhi"},
+ "2026-12-03":{tithi:"Trayodashi",nak:"Bharani",yog:"Parigha",karan:"Kaulav",special:"Pradosh Vrat"},
+ "2026-12-04":{tithi:"Pournima",nak:"Rohini",yog:"Shiva",karan:"Vishti",special:"Pournima • Datta Jayanti"},
+ "2026-12-05":{tithi:"Krishna Pratipada",nak:"Mrigashira",yog:"Siddha",karan:"Balav",special:"Margashirsh Mahina Suru"},
+ "2026-12-06":{tithi:"Dwitiya",nak:"Ardra",yog:"Sadhya",karan:"Kaulav",special:"Shubh Yoga"},
+ "2026-12-07":{tithi:"Tritiya",nak:"Punarvasu",yog:"Shubha",karan:"Taitil",special:"Sankashti Tayari"},
+ "2026-12-08":{tithi:"Chaturthi",nak:"Pushya",yog:"Shukla",karan:"Vanij",special:"Sankashti Chaturthi"},
+ "2026-12-09":{tithi:"Panchami",nak:"Ashlesha",yog:"Brahma",karan:"Bav",special:"Kalbhairav Ashtami Tayari"},
+ "2026-12-10":{tithi:"Shashthi",nak:"Magha",yog:"Indra",karan:"Kaulav",special:"Guruvar - Sai Darshan"},
+ "2026-12-11":{tithi:"Saptami",nak:"P. Phalguni",yog:"Vaidhriti",karan:"Gara",special:"Shukravar - Laxmi Pujan"},
+ "2026-12-12":{tithi:"Ashtami",nak:"U. Phalguni",yog:"Vishkambha",karan:"Vishti",special:"Kalbhairav Ashtami"},
+ "2026-12-13":{tithi:"Navami",nak:"Hasta",yog:"Priti",karan:"Balav",special:"Shanivar - Shani Pujan"},
+ "2026-12-14":{tithi:"Dashami",nak:"Chitra",yog:"Ayushman",karan:"Taitil",special:"Shubh Muhurat"},
+ "2026-12-15":{tithi:"Ekadashi",nak:"Swati",yog:"Saubhagya",karan:"Vanij",special:"Saphala Ekadashi"},
+ "2026-12-16":{tithi:"Dwadashi",nak:"Vishakha",yog:"Shobhana",karan:"Bav",special:"Dhanu Sankranti"},
+ "2026-12-17":{tithi:"Trayodashi",nak:"Anuradha",yog:"Atiganda",karan:"Kaulav",special:"Pradosh"},
+ "2026-12-18":{tithi:"Chaturdashi",nak:"Jyeshtha",yog:"Sukarma",karan:"Gara",special:"Amavasya Tayari"},
+ "2026-12-19":{tithi:"Amavasya",nak:"Mula",yog:"Dhriti",karan:"Chatushpad",special:"Margashirsh Amavasya"},
+ "2026-12-20":{tithi:"Pratipada",nak:"P. Ashadha",yog:"Shula",karan:"Kimstughna",special:"Ravivar - Surya Pujan"},
+ "2026-12-21":{tithi:"Dwitiya",nak:"U. Ashadha",yog:"Ganda",karan:"Balav",special:"Shubh Divas"},
+ "2026-12-22":{tithi:"Tritiya",nak:"Shravan",yog:"Vriddhi",karan:"Taitil",special:"Vinayaki Chaturthi"},
+ "2026-12-23":{tithi:"Chaturthi",nak:"Dhanishta",yog:"Dhruva",karan:"Vanij",special:"Budhvar - Ganpati"},
+ "2026-12-24":{tithi:"Panchami",nak:"Shatabhisha",yog:"Vyaghata",karan:"Bav",special:"Christmas Eve"},
+ "2026-12-25":{tithi:"Shashthi",nak:"P. Bhadrapada",yog:"Harshana",karan:"Kaulav",special:"Christmas • Shubh Din"},
+ "2026-12-26":{tithi:"Saptami",nak:"U. Bhadrapada",yog:"Vajra",karan:"Gara",special:"Shanivar"},
+ "2026-12-27":{tithi:"Ashtami",nak:"Revati",yog:"Siddhi",karan:"Vishti",special:"Ravivar"},
+ "2026-12-28":{tithi:"Navami",nak:"Ashwini",yog:"Vyatipata",karan:"Balav",special:"Somvar"},
+ "2026-12-29":{tithi:"Dashami",nak:"Bharani",yog:"Variyan",karan:"Taitil",special:"Mangalvar"},
+ "2026-12-30":{tithi:"Ekadashi",nak:"Krittika",yog:"Parigha",karan:"Vanij",special:"Putrada Ekadashi"},
+ "2026-12-31":{tithi:"Dwadashi",nak:"Rohini",yog:"Shiva",karan:"Bav",special:"Varshacha Shevatcha Divas"}
+};
+
+function update(){
+  let d = document.getElementById('dateInput').value || new Date().toISOString().slice(0,10);
+  let dt = new Date(d+'T06:00:00');
+  let day = dt.getDay();
+  let god = GODS[day];
+  document.getElementById('godBox').style.background = god.bg;
+  document.getElementById('godEmoji').innerText = god.emoji;
+  document.getElementById('godName').innerText = god.name;
+  document.getElementById('godDesc').innerText = god.desc;
+  let daysMr = ['Ravivar','Somvar','Mangalvar','Budhvar','Guruvar','Shukravar','Shanivar'];
+  document.getElementById('dateStrip').innerText = dt.toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'}) + ' • ' + daysMr[day];
+  let info = DATA[d] || {tithi:"Shukla Paksha",nak:"-",yog:"-",karan:"-",special:"Shubh Divas • Shubhechha"};
+  document.getElementById('vTithi').innerText = info.tithi;
+  document.getElementById('vNakshatra').innerText = info.nak;
+  document.getElementById('vYog').innerText = info.yog;
+  document.getElementById('vKaran').innerText = info.karan;
+  document.getElementById('vSpecial').innerText = info.special;
+  document.getElementById('vRahu').innerText = RAHU[day];
+  document.getElementById('vGulika').innerText = GULIKA[day];
+  let nm = document.getElementById('nameInput').value || "Sushant Joshi";
+  let mo = document.getElementById('mobileInput').value || "";
+  document.getElementById('footerName').innerText = nm;
+  document.getElementById('footerMobile').innerText = mo;
+}
+function setToday(){ document.getElementById('dateInput').value = new Date().toISOString().slice(0,10); update(); }
+function downloadPoster(){
+  let btn = document.querySelector('.btn-down'); btn.innerText='Downloading...';
+  html2canvas(document.getElementById('poster'),{scale:2}).then(canvas=>{
+    let a=document.createElement('a'); a.download='Panchang-'+document.getElementById('dateInput').value+'.png'; a.href=canvas.toDataURL('image/png'); a.click();
+    btn.innerText='⬇️ POSTER DOWNLOAD';
+  });
+}
+document.getElementById('dateInput').addEventListener('change',update);
+document.getElementById('nameInput').addEventListener('input',update);
+document.getElementById('mobileInput').addEventListener('input',update);
+document.getElementById('dateInput').value = new Date().toISOString().slice(0,10);
+update();
+</script>
+</body>
+</html>
