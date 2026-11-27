@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sushant Panchang - Dec 2026 Auto</title>
+<style>
+body{font-family:system-ui;background:#FFF8E1;margin:0;padding:12px}
+h2{text-align:center;color:#8B2500;margin:6px}
+.card{background:#fff;border:2px solid #E6A200;border-radius:14px;padding:12px;max-width:480px;margin:auto}
+label{font-weight:700;font-size:13px} input,select{width:100%;padding:9px;margin:5px 0 10px;border:1px solid #ccc;border-radius:8px}
+button{width:100%;padding:12px;border:0;border-radius:10px;background:#C62828;color:#fff;font-size:16px;font-weight:800}
+#poster{width:100%;max-width:480px;margin:12px auto;background:#FFF3D6;border:3px solid #D4A017;border-radius:12px;overflow:hidden;text-align:center}
+.top{background:#C62828;color:#fff;padding:10px;font-weight:800;font-size:20px}
+img{width:100%;height:280px;object-fit:cover}
+table{width:100%;font-size:14px;border-collapse:collapse} td{padding:7px;border-bottom:1px solid #FFE0A3;text-align:left} td:first-child{font-weight:700;width:32%}
+.rashi{display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:8px} .rashi div{background:#7B1E1E;color:#fff;padding:8px;border-radius:8px;font-size:13px}
+.foot{background:#7B1E1E;color:#fff;padding:10px;font-weight:700}
+.small{font-size:11px;color:#666;text-align:center}
+</style>
+</head>
+<body>
+<h2>🙏 Sushant Panchang - Dec 2026</h2>
+<div class="card">
+<label>तारीख - Dec madhil konatihi tarikh nivda</label>
+<input type="date" id="date" value="2026-12-01" onchange="autoPanchang()">
+<label>वरती नाव</label>
+<select id="title">
+<option>॥ श्रीमंत दगडूशेठ हलवाई गणपती ॥</option>
+<option>॥ श्री गुरुदेव दत्त ॥</option>
+<option>॥ श्री गणेशाय नमः ॥</option>
+</select>
+<label>देवाचा फोटो</label><input type="file" id="photo" accept="image/*">
+<label>Colour Theme</label>
+<select id="theme" onchange="setTheme()">
+<option value="ai">AI Colour - Kesari + Cream + Maroon</option>
+<option value="yellow">Yellow + Golden</option>
+<option value="orange">Kesari + Orange</option>
+</select>
+<label>तुमचे नाव</label><input id="name" value="Sushant Joshi">
+<label>पत्ता</label><input id="addr" value="Maharashtra">
+<label>संपर्क</label><input id="phone" value="9075387693">
+<label>विशेष</label><input id="special" value="-">
+<button onclick="make()">✨ POSTER BANVA</button>
+<p class="small">Dec 2026 - Tithi/Nakshatra Auto. Sanasathi local panchangshi ekda tapasa.</p>
+</div>
+
+<div id="poster" style="display:none">
+<div class="top" id="pTitle"></div>
+<div id="pDate" style="padding:6px;font-weight:700"></div>
+<div style="font-size:12px">श्रीमन् शालिवाहन शके १९४८ • पराभव नाम संवत्सर • मार्गशीर्ष मास</div>
+<img id="pImg" src="https://images.unsplash.com/photo-1604608672516-f1b9b1d37076?w=800">
+<table>
+<tr><td>तिथी</td><td id="tTithi"></td></tr>
+<tr><td>वार</td><td id="tWar"></td></tr>
+<tr><td>नक्षत्र</td><td id="tNak"></td></tr>
+<tr><td>योग</td><td id="tYog"></td></tr>
+<tr><td>करण</td><td id="tKaran"></td></tr>
+<tr><td>सूर्य</td><td id="tSun"></td></tr>
+</table>
+<div class="rashi"><div id="r1">चंद्र: धनु</div><div id="r2">सूर्य: वृश्चिक</div><div id="r3">गुरु: सिंह</div><div>अग्निवास: नाही</div></div>
+<div style="background:#FFE082;padding:7px;font-weight:800" id="pSpecial"></div>
+<div class="foot"><span id="pName"></span><br><small id="pAddr"></small> | <span id="pPhone"></span></div>
+</div>
+<button id="dl" style="display:none;max-width:480px;margin:auto" onclick="window.print()">⬇️ DOWNLOAD / SHARE</button>
+
+<script>
+const DATA={
+"2026-11-27":{tithi:"तृतीया ०९:४९ प नं - चतुर्थी",war:"शुक्रवार - राहूकाळ : ११:०२ ते १२:२५",nak:"आर्द्रा १५:०८ प नं - पुनर्वसु",yog:"शुभ २३:५१ प नं - शुक्ल",karan:"विष्टी ०९:४९ प नं - शकुनी",sun:"०६:५२ | सूर्यास्त: १७:५१ | चंद्रोदय: २०:५२",special:"संकष्टी चतुर्थी",chandra:"मिथुन"},
+"2026-12-01":{tithi:"सप्तमी ११:२० प नं - अष्टमी",war:"मंगळवार - राहूकाळ : १५:०५ ते १६:२७",nak:"मघा १९:४५ प नं - पूर्वा",yog:"वैधृती २०:४० प नं - विष्कंभ",karan:"वणिज ११:२० प नं - विष्टी",sun:"०६:५५ | सूर्यास्त: १७:५१ | चंद्रोदय: ००:२५",special:"-",chandra:"सिंह"},
+"2026-12-02":{tithi:"अष्टमी ११:०५ प नं - नवमी",war:"बुधवार - राहूकाळ : १२:२५ ते १३:४७",nak:"पूर्वा १९:५५ प नं - उत्तरा",yog:"विष्कंभ १९:३० प नं - प्रीती",karan:"बव ११:०५ प नं - बालव",sun:"०६:५६ | सूर्यास्त: १७:५१ | चंद्रोदय: ०१:१८",special:"कालभैरव अष्टमी",chandra:"सिंह"},
+"2026-12-03":{tithi:"नवमी १०:३० प नं - दशमी",war:"गुरुवार - राहूकाळ : १३:४७ ते १५:०८",nak:"उत्तरा १९:४० प नं - हस्त",yog:"प्रीती १८:१० प नं - आयुष्मान",karan:"कौलव १०:३० प नं - तैतिल",sun:"०६:५६ | सूर्यास्त: १७:५२ | चंद्रोदय: ०२:१२",special:"-",chandra:"कन्या"},
+"2026-12-04":{tithi:"दशमी ०९:४५ प नं - एकादशी",war:"शुक्रवार - राहूकाळ : ११:०३ ते १२:२५",nak:"हस्त १९:०५ प नं - चित्रा",yog:"आयुष्मान १६:४५ प नं - सौभाग्य",karan:"गर ०९:४५ प नं - वणिज",sun:"०६:५७ | सूर्यास्त: १७:५२ | चंद्रोदय: ०३:०७",special:"-",chandra:"कन्या"},
+"2026-12-05":{tithi:"एकादशी ०८:५० प नं - द्वादशी",war:"शनिवार - राहूकाळ : ०९:४० ते ११:०२",nak:"चित्रा १८:१५ प नं - स्वाती",yog:"सौभाग्य १५:१५ प नं - शोभन",karan:"विष्टी ०८:५० प नं - बव",sun:"०६:५७ | सूर्यास्त: १७:५२ | चंद्रोदय: ०४:०२",special:"उत्पत्ती एकादशी",chandra:"तूळ"},
+"2026-12-06":{tithi:"द्वादशी ०७:५० प नं - त्रयोदशी",war:"रविवार - राहूकाळ : १६:३० ते १७:५२",nak:"स्वाती १७:२० प नं - विशाखा",yog:"शोभन १३:४० प नं - अतिगंड",karan:"बालव ०७:५० प नं - कौलव",sun:"०६:५८ | सूर्यास्त: १७:५३ | चंद्रोदय: ०४:५८",special:"प्रदोष",chandra:"तूळ"},
+"2026-12-07":{tithi:"त्रयोदशी ०६:५० प नं - चतुर्दशी",war:"सोमवार - राहूकाळ : ०८:१८ ते ०९:४०",nak:"विशाखा १६:२० प नं - अनुराधा",yog:"अतिगंड १२:०५ प नं - सुकर्मा",karan:"तैतिल ०६:५० प नं - गर",sun:"०६:५८ | सूर्यास्त: १७:५३ | चंद्रोदय: ०५:५५",special:"मासिक शिवरात्री",chandra:"वृश्चिक"},
+"2026-12-08":{tithi:"चतुर्दशी ०५:५५ प नं - अमावस्या",war:"मंगळवार - राहूकाळ : १५:०६ ते १६:२८",nak:"अनुराधा १५:१५ प नं - ज्येष्ठा",yog:"सुकर्मा १०:३० प नं - धृती",karan:"शकुनी ०५:५५ प नं - चतुष्पाद",sun:"०६:५९ | सूर्यास्त: १७:५३ | चंद्रोदय: ०६:५२",special:"-",chandra:"वृश्चिक"},
+"2026-12-09":{tithi:"अमावस्या ०५:१० प नं - प्रतिपदा",war:"बुधवार - राहूकाळ : १२:२६ ते १३:४८",nak:"ज्येष्ठा १४:१० प नं - मूळ",yog:"धृती ०९:०० प नं - शूल",karan:"नाग ०५:१० प नं - किंस्तुघ्न",sun:"०६:५९ | सूर्यास्त: १७:५४ | चंद्रोदय: ०७:४८",special:"मार्गशीर्ष अमावस्या",chandra:"धनु"},
+"2026-12-10":{tithi:"प्रतिपदा ०४:३५ प नं - द्वितीया",war:"गुरुवार - राहूकाळ : १३:४८ ते १५:१०",nak:"मूळ १३:१५ प नं - पूर्वाषाढा",yog:"शूल ०७:४५ प नं - गंड",karan:"बव ०४:३५ प नं - बालव",sun:"०७:०० | सूर्यास्त: १७:५४ | चंद्रोदय: ०८:४४",special:"-",chandra:"धनु"},
+"2026-12-11":{tithi:"द्वितीया ०४:१५ प नं - तृतीया",war:"शुक्रवार - राहूकाळ : ११:०४ ते १२:२६",nak:"पूर्वाषाढा १२:३० प नं - उत्तराषाढा",yog:"गंड ०६:४० प नं - वृद्धी",karan:"कौलव ०४:१५ प नं - तैतिल",sun:"०७:०० | सूर्यास्त: १७:५४ | चंद्रोदय: ०९:३८",special:"-",chandra:"मकर"},
+"2026-12-12":{tithi:"तृतीया ०४:१० प नं - चतुर्थी",war:"शनिवार - राहूकाळ : ०९:४१ ते ११:०३",nak:"उत्तराषाढा १२:०५ प नं - श्रवण",yog:"वृद्धी ०५:५० प नं - ध्रुव",karan:"गर ०४:१० प नं - वणिज",sun:"०७:०१ | सूर्यास्त: १७:५५ | चंद्रोदय: १०:३०",special:"-",chandra:"मकर"},
+"2026-12-13":{tithi:"चतुर्थी ०४:२० प नं - पंचमी",war:"रविवार - राहूकाळ : १६:३२ ते १७:५४",nak:"श्रवण १२:०० प नं - धनिष्ठा",yog:"ध्रुव ०५:१५ प नं - व्याघात",karan:"विष्टी ०४:२० प नं - बव",sun:"०७:०१ | सूर्यास्त: १७:५५ | चंद्रोदय: ११:२०",special:"-",chandra:"कुंभ"},
+"2026-12-14":{tithi:"पंचमी ०४:४५ प नं - षष्ठी",war:"सोमवार - राहूकाळ : ०८:२० ते ०९:४२",nak:"धनिष्ठा १२:१५ प नं - शततारका",yog:"व्याघात ०४:५० प नं - हर्षण",karan:"बालव ०४:४५ प नं - कौलव",sun:"०७:०२ | सूर्यास्त: १७:५६ | चंद्रोदय: १२:०८",special:"-",chandra:"कुंभ"},
+"2026-12-15":{tithi:"षष्ठी ०५:२५ प नं - सप्तमी",war:"मंगळवार - राहूकाळ : १५:०८ ते १६:३०",nak:"शततारका १२:५० प नं - पूर्वाभाद्रपदा",yog:"हर्षण ०४:४० प नं - वज्र",karan:"तैतिल ०५:२५ प नं - गर",sun:"०७:०२ | सूर्यास्त: १७:५६ | चंद्रोदय: १२:५५",special:"-",chandra:"मीन"},
+"2026-12-16":{tithi:"सप्तमी ०६:१५ प नं - अष्टमी",war:"बुधवार - राहूकाळ : १२:२७ ते १३:४९",nak:"पूर्वाभाद्रपदा १३:४५ प नं - उत्तराभाद्रपदा",yog:"वज्र ०४:४५ प नं - सिद्धी",karan:"वणिज ०६:१५ प नं - विष्टी",sun:"०७:०३ | सूर्यास्त: १७:५७ | चंद्रोदय: १३:४२",special:"धनु संक्रांत",chandra:"मीन"},
+"2026-12-17":{tithi:"अष्टमी ०७:१५ प नं - नवमी",war:"गुरुवार - राहूकाळ : १३:४९ ते १५:११",nak:"उत्तराभाद्रपदा १४:५५ प नं - रेवती",yog:"सिद्धी ०५:०५ प नं - व्यतिपात",karan:"बव ०७:१५ प नं - बालव",sun:"०७:०३ | सूर्यास्त: १७:५७ | चंद्रोदय: १४:२८",special:"कालाष्टमी",chandra:"मीन"},
+"2026-12-18":{tithi:"नवमी ०८:२० प नं - दशमी",war:"शुक्रवार - राहूकाळ : ११:०५ ते १२:२७",nak:"रेवती १६:२० प नं - अश्विनी",yog:"व्यतिपात ०५:४० प नं - वरीयान",karan:"कौलव ०८:२० प नं - तैतिल",sun:"०७:०४ | सूर्यास्त: १७:५८ | चंद्रोदय: १५:१५",special:"-",chandra:"मेष"},
+"2026-12-19":{tithi:"दशमी ०९:३० प नं - एकादशी",war:"शनिवार - राहूकाळ : ०९:४३ ते ११:०५",nak:"अश्विनी १७:५० प नं - भरणी",yog:"वरीयान ०६:२५ प नं - परिघ",karan:"गर ०९:३० प नं - वणिज",sun:"०७:०४ | सूर्यास्त: १७:५८ | चंद्रोदय: १६:०२",special:"-",chandra:"मेष"},
+"2026-12-20":{tithi:"एकादशी १०:४० प नं - द्वादशी",war:"रविवार - राहूकाळ : १६:३४ ते १७:५६",nak:"भरणी १९:२५ प नं - कृत्तिका",yog:"परिघ ०७:१५ प नं - शिव",karan:"विष्टी १०:४० प नं - बव",sun:"०७:०५ | सूर्यास्त: १७:५९ | चंद्रोदय: १६:५०",special:"मोक्षदा एकादशी",chandra:"वृषभ"},
+"2026-12-21":{tithi:"द्वादशी ११:४५ प नं - त्रयोदशी",war:"सोमवार - राहूकाळ : ०८:२२ ते ०९:४४",nak:"कृत्तिका २०:५५ प नं - रोहिणी",yog:"शिव ०८:०५ प नं - सिद्ध",karan:"बालव ११:४५ प नं - कौलव",sun:"०७:०५ | सूर्यास्त: १७:५९ | चंद्रोदय: १७:३८",special:"प्रदोष",chandra:"वृषभ"},
+"2026-12-22":{tithi:"त्रयोदशी १२:४५ प नं - चतुर्दशी",war:"मंगळवार - राहूकाळ : १५:१० ते १६:३२",nak:"रोहिणी २२:२० प नं - मृगशीर्ष",yog:"सिद्ध ०८:५५ प नं - साध्य",karan:"तैतिल १२:४५ प नं - गर",sun:"०७:०६ | सूर्यास्त: १८:०० | चंद्रोदय: १८:२७",special:"-",chandra:"मिथुन"},
+"2026-12-23":{tithi:"चतुर्दशी १३:४० प नं - पौर्णिमा",war:"बुधवार - राहूकाळ : १२:२८ ते १३:५०",nak:"मृगशीर्ष २३:३५ प नं - आर्द्रा",yog:"साध्य ०९:४५ प नं - शुभ",karan:"वणिज १३:४० प नं - विष्टी",sun:"०७:०६ | सूर्यास्त: १८:०० | चंद्रोदय: १९:१७",special:"दत्त जयंती - पूर्वसंध्या",chandra:"मिथुन"},
+"2026-12-24":{tithi:"पौर्णिमा १४:३० प नं - प्रतिपदा",war:"गुरुवार - राहूकाळ : १३:५० ते १५:१२",nak:"आर्द्रा ००:४५ प नं - पुनर्वसु",yog:"शुभ १०:३० प नं - शुक्ल",karan:"बव १४:३० प नं - बालव",sun:"०७:०७ | सूर्यास्त: १८:०१ | चंद्रोदय: २०:०८",special:"श्री दत्त जयंती",chandra:"मिथुन"},
+"2026-12-25":{tithi:"प्रतिपदा १५:१० प नं - द्वितीया",war:"शुक्रवार - राहूकाळ : ११:०६ ते १२:२८",nak:"पुनर्वसु ०१:४५ प नं - पुष्य",yog:"शुक्ल ११:१० प नं - ब्रह्म",karan:"कौलव १५:१० प नं - तैतिल",sun:"०७:०७ | सूर्यास्त: १८:०१ | चंद्रोदय: २१:००",special:"नाताळ",chandra:"कर्क"},
+"2026-12-26":{tithi:"द्वितीया १५:४५ प नं - तृतीया",war:"शनिवार - राहूकाळ : ०९:४५ ते ११:०७",nak:"पुष्य ०२:३५ प नं - आश्लेषा",yog:"ब्रह्म ११:४५ प नं - इंद्र",karan:"गर १५:४५ प नं - वणिज",sun:"०७:०७ | सूर्यास्त: १८:०२ | चंद्रोदय: २१:५३",special:"-",chandra:"कर्क"},
+"2026-12-27":{tithi:"तृतीया १६:१० प नं - चतुर्थी",war:"रविवार - राहूकाळ : १६:३६ ते १७:५८",nak:"आश्लेषा ०३:१५ प नं - मघा",yog:"इंद्र १२:१५ प नं - वैधृती",karan:"विष्टी १६:१० प नं - बव",sun:"०७:०८ | सूर्यास्त: १८:०२ | चंद्रोदय: २२:४७",special:"संकष्टी चतुर्थी - पूर्वसंध्या",chandra:"सिंह"},
+"2026-12-28":{tithi:"चतुर्थी १६:३० प नं - पंचमी",war:"सोमवार - राहूकाळ : ०८:२४ ते ०९:४६",nak:"मघा ०३:४५ प नं - पूर्वा",yog:"वैधृती १२:३५ प नं - विष्कंभ",karan:"बालव १६:३० प नं - कौलव",sun:"०७:०८ | सूर्यास्त: १८:०३ | चंद्रोदय: २३:४२",special:"संकष्टी चतुर्थी",chandra:"सिंह"},
+"2026-12-29":{tithi:"पंचमी १६:४५ प नं - षष्ठी",war:"मंगळवार - राहूकाळ : १५:१२ ते १६:३४",nak:"पूर्वा ०४:०५ प नं - उत्तरा",yog:"विष्कंभ १२:५० प नं - प्रीती",karan:"तैतिल १६:४५ प नं - गर",sun:"०७:०८ | सूर्यास्त: १८:०३ | चंद्रोदय: ००:३८",special:"-",chandra:"कन्या"},
+"2026-12-30":{tithi:"षष्ठी १६:५० प नं - सप्तमी",war:"बुधवार - राहूकाळ : १२:२९ ते १३:५१",nak:"उत्तरा ०४:१५ प नं - हस्त",yog:"प्रीती १२:५५ प नं - आयुष्मान",karan:"वणिज १६:५० प नं - विष्टी",sun:"०७:०९ | सूर्यास्त: १८:०४ | चंद्रोदय: ०१:३५",special:"-",chandra:"कन्या"},
+"2026-12-31":{tithi:"सप्तमी १६:४५ प नं - अष्टमी",war:"गुरुवार - राहूकाळ : १३:५१ ते १५:१३",nak:"हस्त ०४:१० प नं - चित्रा",yog:"आयुष्मान १२:५० प नं - सौभाग्य",karan:"बव १६:४५ प नं - बालव",sun:"०७:०९ | सूर्यास्त: १८:०४ | चंद्रोदय: ०२:३२",special:"वर्षअखेर - ३१ डिसेंबर",chandra:"तूळ"}
+};
+function autoPanchang(){let d=document.getElementById('date').value;let o=DATA[d];
+if(o){document.getElementById('special').value=o.special;
+document.getElementById('tTithi').innerText=o.tithi;document.getElementById('tWar').innerText=o.war;
+document.getElementById('tNak').innerText=o.nak;document.getElementById('tYog').innerText=o.yog;
+document.getElementById('tKaran').innerText=o.karan;document.getElementById('tSun').innerText=o.sun;
+document.getElementById('r1').innerText='चंद्र: '+o.chandra;}}
+function setTheme(){let t=document.getElementById('theme').value;let p=document.getElementById('poster');
+if(t=='yellow'){p.style.background='#FFEB3B';p.style.borderColor='#FF9800'}
+if(t=='orange'){p.style.background='#FFE0B2';p.style.borderColor='#E65100'}
+if(t=='ai'){p.style.background='#FFF3D6';p.style.borderColor='#D4A017'}}
+document.getElementById('photo').addEventListener('change',e=>{let r=new FileReader();r.onload=()=>document.getElementById('pImg').src=r.result;r.readAsDataURL(e.target.files[0]);});
+function make(){autoPanchang();
+document.getElementById('poster').style.display='block';document.getElementById('dl').style.display='block';
+document.getElementById('pTitle').innerText=document.getElementById('title').value;
+document.getElementById('pDate').innerText='दैनिक पंचांग '+document.getElementById('date').value.split('-').reverse().join('-');
+document.getElementById('pSpecial').innerText='विशेष : '+document.getElementById('special').value;
+document.getElementById('pName').innerText=document.getElementById('name').value;
+document.getElementById('pAddr').innerText='पत्ता :- '+document.getElementById('addr').value;
+document.getElementById('pPhone').innerText='संपर्क: '+document.getElementById('phone').value;
+window.scrollTo(0,600);}
+autoPanchang();
+</script>
+</body>
+</html>
