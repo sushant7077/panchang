@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>chintamani - Shani Maharaj</title>
+<title>Chintamani Panchang - Pandit Sushant Joshi</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif}
@@ -16,16 +16,14 @@ body{background:#e8dcc0;padding:12px;padding-bottom:30px}
 .btn-down{background:#1a7a2e;color:#fff}
 .btn-today{background:#6b0f0f;color:#fff}
 .btn-wa{background:#25D366;color:#fff}
-/* POSTER - DAGDUSHETH ROYAL FRAME */
 #poster{width:100%;max-width:480px;margin:0 auto;background:#fdf6e3;background-image:radial-gradient(#e8d5a0 1px, transparent 1px);background-size:22px 22px;border:4px solid #c9a227;outline:2px solid #8a6d00;outline-offset:-10px;overflow:hidden;box-shadow:0 10px 30px #0003}
 .header{background:linear-gradient(135deg,#6b0f0f,#9a1a1a,#6b0f0f);color:#ffe9a8;text-align:center;padding:14px 12px 10px;border-bottom:3px solid #c9a227}
-.header h1{font-size:22px;line-height:1.3;text-shadow:0 2px 4px #000}
+.header h1{font-size:22px}
 .header h2{font-size:20px;margin-top:4px;color:#fff}
 .header p{font-size:11px;color:#ffdd99;margin-top:5px;line-height:1.4}
 .frame-wrap{padding:16px 22px 10px;text-align:center}
-.gold-frame{border:6px solid #c9a227;outline:3px solid #8a6d00;outline-offset:2px;border-radius:8px;overflow:hidden;height:300px;background:#222;box-shadow:0 6px 20px #0004}
+.gold-frame{border:6px solid #c9a227;outline:3px solid #8a6d00;outline-offset:2px;border-radius:8px;overflow:hidden;height:300px;background:#222}
 .gold-frame img{width:100%;height:100%;object-fit:cover}
-.god-label{margin-top:8px;font-weight:800;color:#6b0f0f;font-size:16px}
 .sunbar{background:#4a0000;color:#ffe9a8;display:flex;justify-content:space-around;padding:10px 6px;margin:0 14px;border:2px solid #c9a227;border-radius:10px;font-size:13px;font-weight:700}
 .main{display:grid;grid-template-columns:1.35fr 1fr;gap:10px;padding:12px 14px}
 .left{display:flex;flex-direction:column;gap:9px}
@@ -38,12 +36,12 @@ body{background:#e8dcc0;padding:12px;padding-bottom:30px}
 .box b{font-size:17px;margin-top:6px}
 .vishesh{margin:0 14px 14px;background:#4a0000;color:#ffe9a8;text-align:center;padding:12px;border:2px solid #c9a227;border-radius:10px;font-size:18px;font-weight:800}
 .vishesh span{color:#fff;font-size:15px;display:block;margin-top:2px;font-weight:600}
-.footer{background:#6b0f0f;color:#fff;text-align:center;padding:10px;font-size:12px}
-.footer b{color:#ffdd66}
+.footer{background:#6b0f0f;color:#fff;text-align:center;padding:12px;font-size:14px;line-height:1.6}
+.footer b{color:#ffdd66;font-size:18px}
 </style>
 </head>
 <body>
-<div class="topbar"><h2>🕉️ Dagdusheth Royal Poster Maker</h2><p>Shani Maharaj Special - 28-11-2026</p></div>
+<div class="topbar"><h2>🕉️ Chintamani Panchang Maker</h2><p>1 Photo Fix - Pandit Version</p></div>
 <div class="controls">
   <input type="date" id="dateInput">
   <input type="text" id="nameInput" value="Sushant Joshi" placeholder="Nav">
@@ -56,13 +54,12 @@ body{background:#e8dcc0;padding:12px;padding-bottom:30px}
 
 <div id="poster">
   <div class="header">
-    <h1>॥ श्री शनि महाराज ॥</h1>
+    <h1>॥ श्री चिंतामणी ॥</h1>
     <h2>🪔 दैनिक पंचांग <span id="hDate">२८-११-२०२६</span> 🪔</h2>
     <p>श्रीमन् शालिवाहन शके १९४८ • पराभव नाम संवत्सर • दक्षिणायन • सौर हेमंत ऋतू • कार्तिक मास • कृष्ण पक्ष</p>
   </div>
   <div class="frame-wrap">
-    <div class="gold-frame"><img id="god-image" src="https://images.unsplash.com/photo-1604608672516-f1b9e1a5e4c7?w=800&q=80" alt="Shani Maharaj"></div>
-    <div class="god-label" id="godLabel">ॐ शं शनैश्चराय नमः • Shanivar</div>
+    <div class="gold-frame"><img src="https://images.unsplash.com/photo-1561361058-c24cecae35ca?w=800&q=80" alt="Chintamani"></div>
   </div>
   <div class="sunbar">
     <span>☀️ सूर्योदय: <span id="vSunrise">06:53</span></span>
@@ -85,19 +82,10 @@ body{background:#e8dcc0;padding:12px;padding-bottom:30px}
     </div>
   </div>
   <div class="vishesh">🪔 विशेष : <span id="vSpecial">शनिवार - शनि पूजन</span></div>
-  <div class="footer">पंडित• <b><span id="footerName">Sushant Joshi</span></b> • <span id="footerAddr">Maharashtra</span> • 📞 <span id="footerMobile">9075387693</span></div>
+  <div class="footer"><b>पंडित <span id="footerName">Sushant Joshi</span></b><br>पत्ता :- <span id="footerAddr">Maharashtra</span> • 📞 <span id="footerMobile">9075387693</span></div>
 </div>
 
 <script>
-const deities = [
- {day:"Ravivar", label:"ॐ सूर्याय नमः • Ravivar", url:"https://images.unsplash.com/photo-1502139214982-d0ad755818d8?w=800&q=80", title:"॥ श्री सूर्य देव ॥"},
- {day:"Somvar", label:"ॐ नमः शिवाय • Somvar", url:"https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=800&q=80", title:"॥ श्री महादेव ॥"},
- {day:"Mangalvar", label:"जय बजरंगबली • Mangalvar", url:"https://images.unsplash.com/photo-1604608672516-f1b9e1a5e4c7?w=800&q=80", title:"॥ श्री हनुमान ॥"},
- {day:"Budhvar", label:"वक्रतुंड महाकाय • Budhvar", url:"https://images.unsplash.com/photo-1561361058-c24cecae35ca?w=800&q=80", title:"॥ श्री गणपती बाप्पा ॥"},
- {day:"Guruvar", label:"श्रद्धा सबुरी • Guruvar", url:"https://images.unsplash.com/photo-1548013146-72479768bada?w=800&q=80", title:"॥ श्री साई बाबा ॥"},
- {day:"Shukravar", label:"धन • समृद्धी • Shukravar", url:"https://images.unsplash.com/photo-1574610758891-5b809b794e21?w=800&q=80", title:"॥ श्री महालक्ष्मी ॥"},
- {day:"Shanivar", label:"ॐ शं शनैश्चराय नमः • Shanivar", url:"https://images.unsplash.com/photo-1591389703635-e15a07b842d7?w=800&q=80", title:"॥ श्री शनि महाराज ॥"}
-];
 const DATA = {
  "2026-11-28":{tithi:"पंचमी 27:57 प नं - षष्ठी",var:"शनिवार",nak:"पुनर्वसू 12:50 प नं - पुष्य",yog:"शुक्ल 20:18 प नं - ब्रह्म",karan:"कौलव 17:15 प नं - तैतिल",chandra:"मिथुन",surya:"वृश्चिक",guru:"सिंह",agni:"27:57 पर्यंत",special:"शनिवार - शनि पूजन",sunrise:"06:53",sunset:"17:59",moon:"21:58"},
  "2026-11-29":{tithi:"षष्ठी 26:30 प नं - सप्तमी",var:"रविवार",nak:"पुष्य 14:20 प नं - आश्लेषा",yog:"ब्रह्म 18:40 प नं - इंद्र",karan:"तैतिल 15:10 प नं - गर",chandra:"कर्क",surya:"वृश्चिक",guru:"सिंह",agni:"26:30 पर्यंत",special:"रविवार - सूर्य पूजन",sunrise:"06:53",sunset:"17:59",moon:"22:30"},
@@ -108,12 +96,9 @@ const DATA = {
 const RAHU = {0:"04:30 - 06:00",1:"07:30 - 09:00",2:"03:00 - 04:30",3:"12:00 - 01:30",4:"01:30 - 03:00",5:"11:02 - 12:25",6:"09:31 ते 11:03"};
 function update(){
   let d = document.getElementById('dateInput').value || "2026-11-28";
-  let dt = new Date(d+'T06:00:00'); let idx = dt.getDay(); let td = deities[idx];
-  document.getElementById('god-image').src = td.url;
-  document.getElementById('godLabel').innerText = td.label;
-  document.querySelector('.header h1').innerText = td.title;
+  let dt = new Date(d+'T06:00:00'); let idx = dt.getDay();
   document.getElementById('hDate').innerText = dt.toLocaleDateString('en-IN',{day:'2-digit',month:'2-digit',year:'numeric'});
-  let info = DATA[d] || {tithi:"-",var:td.day,nak:"-",yog:"-",karan:"-",chandra:"-",surya:"-",guru:"-",agni:"-",special:"शुभ दिवस",sunrise:"06:52",sunset:"17:59",moon:"20:52"};
+  let info = DATA[d] || {tithi:"-",var:"-",nak:"-",yog:"-",karan:"-",chandra:"-",surya:"-",guru:"-",agni:"-",special:"शुभ दिवस",sunrise:"06:52",sunset:"17:59",moon:"20:52"};
   document.getElementById('vTithi').innerText = info.tithi;
   document.getElementById('vVar').innerHTML = info.var + " राहूकाळ : " + RAHU[idx];
   document.getElementById('vNakshatra').innerText = info.nak;
@@ -139,7 +124,7 @@ function downloadPoster(){
   });
 }
 function copyWhatsApp(){
-  let txt="॥ शुभं भवतु ॥ आजचा दिवस मंगलमय होवो! ✨\n\n🙏 ॐ शं शनैश्चराय नमः\n\nदैनिक पंचांग - "+document.getElementById('dateInput').value+" , "+document.getElementById('vVar').innerText+"\n🌅 "+document.getElementById('vSunrise').innerText+" | 🌇 "+document.getElementById('vSunset').innerText+"\nतिथी: "+document.getElementById('vTithi').innerText+"\n\n"+document.getElementById('nameInput').value+" • "+document.getElementById('mobileInput').value;
+  let txt="॥ शुभं भवतु ॥ आजचा दिवस मंगलमय होवो! ✨\n\nदैनिक पंचांग - "+document.getElementById('dateInput').value+"\nतिथी: "+document.getElementById('vTithi').innerText+"\n\nपंडित "+document.getElementById('nameInput').value+" • "+document.getElementById('mobileInput').value;
   navigator.clipboard.writeText(txt).then(()=>alert("WhatsApp Text Copy Zala!"));
 }
 document.getElementById('dateInput').addEventListener('change',update);
