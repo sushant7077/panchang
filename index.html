@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Chintamani Panchang - Pandit Sushant Joshi</title>
+<title>Panchang - Pandit Sushant Joshi</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif}
@@ -16,25 +16,19 @@ body{background:#e8dcc0;padding:12px;padding-bottom:30px}
 .btn-down{background:#1a7a2e;color:#fff}
 .btn-today{background:#6b0f0f;color:#fff}
 .btn-wa{background:#25D366;color:#fff}
-.btn-photo{background:#ff9800;color:#fff}
-.btn-deity{background:#6a1b9a;color:#fff}
-/* PHOTO BOX */
 .photo-box{background:#fff3d6;border:2px dashed #c9a227;border-radius:12px;padding:12px;text-align:center;margin-bottom:12px}
 .photo-box h3{color:#6b0f0f;font-size:15px;margin-bottom:8px}
 .photo-box p{font-size:12px;color:#666;margin-top:6px}
 .photo-box input{display:none}
-.photo-btn{display:inline-block;background:#ff9800;color:#fff;padding:10px 18px;border-radius:8px;font-weight:700;cursor:pointer}
-.photo-btn2{display:inline-block;background:#6a1b9a;color:#fff;padding:10px 14px;border-radius:8px;font-weight:700;cursor:pointer;margin-left:6px}
+.photo-btn{display:inline-block;background:#ff9800;color:#fff;padding:11px 20px;border-radius:8px;font-weight:700;cursor:pointer;font-size:15px}
 #poster{width:100%;max-width:480px;margin:0 auto;background:#fdf6e3;background-image:radial-gradient(#e8d5a0 1px, transparent 1px);background-size:22px 22px;border:4px solid #c9a227;outline:2px solid #8a6d00;outline-offset:-10px;overflow:hidden;box-shadow:0 10px 30px #0003}
 .header{background:linear-gradient(135deg,#6b0f0f,#9a1a1a,#6b0f0f);color:#ffe9a8;text-align:center;padding:14px 12px 10px;border-bottom:3px solid #c9a227}
 .header h1{font-size:22px}
 .header h2{font-size:20px;margin-top:4px;color:#fff}
 .header p{font-size:11px;color:#ffdd99;margin-top:5px;line-height:1.4}
-.frame-wrap{padding:16px 22px 10px;text-align:center;position:relative}
+.frame-wrap{padding:16px 22px 10px;text-align:center}
 .gold-frame{border:6px solid #c9a227;outline:3px solid #8a6d00;outline-offset:2px;border-radius:8px;overflow:hidden;height:300px;background:#222}
 .gold-frame img{width:100%;height:100%;object-fit:cover}
-.pandit-badge{position:absolute;bottom:18px;right:28px;width:78px;height:78px;border-radius:50%;border:4px solid #c9a227;overflow:hidden;background:#fff;box-shadow:0 4px 12px #0006;display:none}
-.pandit-badge img{width:100%;height:100%;object-fit:cover}
 .sunbar{background:#4a0000;color:#ffe9a8;display:flex;justify-content:space-around;padding:10px 6px;margin:0 14px;border:2px solid #c9a227;border-radius:10px;font-size:13px;font-weight:700}
 .main{display:grid;grid-template-columns:1.35fr 1fr;gap:10px;padding:12px 14px}
 .left{display:flex;flex-direction:column;gap:9px}
@@ -47,21 +41,23 @@ body{background:#e8dcc0;padding:12px;padding-bottom:30px}
 .box b{font-size:17px;margin-top:6px}
 .vishesh{margin:0 14px 14px;background:#4a0000;color:#ffe9a8;text-align:center;padding:12px;border:2px solid #c9a227;border-radius:10px;font-size:18px;font-weight:800}
 .vishesh span{color:#fff;font-size:15px;display:block;margin-top:2px;font-weight:600}
-.footer{background:#6b0f0f;color:#fff;text-align:center;padding:12px;font-size:14px;line-height:1.6}
-.footer b{color:#ffdd66;font-size:18px}
+/* FOOTER WITH PHOTO */
+.footer{background:#6b0f0f;color:#fff;padding:12px 14px;display:flex;align-items:center;gap:12px;justify-content:center}
+.footer-photo{width:62px;height:62px;border-radius:50%;border:3px solid #ffdd66;overflow:hidden;background:#fff;flex-shrink:0}
+.footer-photo img{width:100%;height:100%;object-fit:cover}
+.footer-text{text-align:left;line-height:1.5}
+.footer-text b{color:#ffdd66;font-size:19px}
+.footer-text span{font-size:13px}
 </style>
 </head>
 <body>
-<div class="topbar"><h2>🕉️ Chintamani Panchang Maker</h2><p>Tumcha Photo + Pandit Version</p></div>
+<div class="topbar"><h2>🕉️ Panchang Maker</h2><p>Fakta Mazha Photo Version</p></div>
 
-<!-- PHOTO UPLOAD BOX -->
 <div class="photo-box">
   <h3>📸 Tumcha Photo Ithe Lawa</h3>
-  <label class="photo-btn" for="photoInput">📸 PHOTO SELECT KARA</label>
+  <label class="photo-btn" for="photoInput">📸 MAZHA PHOTO SELECT KARA</label>
   <input type="file" id="photoInput" accept="image/*">
-  <label class="photo-btn2" onclick="showDeity()">🙏 Chintamani Photo</label>
-  <label class="photo-btn2" style="background:#d32f2f" onclick="showMyPhoto()">👤 Mazha Photo</label>
-  <p id="photoStatus">Sadhya: Chintamani Photo disat ahe. Tumcha photo select kelyavar to poster madhe yeil.</p>
+  <p id="photoStatus">Photo select kelyavar motha photo + Pandit navachya bajula photo disel.</p>
 </div>
 
 <div class="controls">
@@ -81,8 +77,7 @@ body{background:#e8dcc0;padding:12px;padding-bottom:30px}
     <p>श्रीमन् शालिवाहन शके १९४८ • पराभव नाम संवत्सर • दक्षिणायन • सौर हेमंत ऋतू • कार्तिक मास • कृष्ण पक्ष</p>
   </div>
   <div class="frame-wrap">
-    <div class="gold-frame"><img id="mainPhoto" src="https://images.unsplash.com/photo-1561361058-c24cecae35ca?w=800&q=80" alt="Chintamani"></div>
-    <div class="pandit-badge" id="panditBadge"><img id="panditImg" src=""></div>
+    <div class="gold-frame"><img id="mainPhoto" src="https://images.unsplash.com/photo-1561361058-c24cecae35ca?w=800&q=80" alt="Photo"></div>
   </div>
   <div class="sunbar">
     <span>☀️ सूर्योदय: <span id="vSunrise">06:53</span></span>
@@ -105,11 +100,13 @@ body{background:#e8dcc0;padding:12px;padding-bottom:30px}
     </div>
   </div>
   <div class="vishesh">🪔 विशेष : <span id="vSpecial">शनिवार - शनि पूजन</span></div>
-  <div class="footer"><b>पंडित <span id="footerName">Sushant Joshi</span></b><br>पत्ता :- <span id="footerAddr">Maharashtra</span> • 📞 <span id="footerMobile">9075387693</span></div>
+  <div class="footer">
+    <div class="footer-photo"><img id="footerPhotoImg" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80"></div>
+    <div class="footer-text"><b>पंडित <span id="footerName">Sushant Joshi</span></b><br><span>पत्ता :- <span id="footerAddr">Maharashtra</span> • 📞 <span id="footerMobile">9075387693</span></span></div>
+  </div>
 </div>
 
 <script>
-const DEITY_URL = "https://images.unsplash.com/photo-1561361058-c24cecae35ca?w=800&q=80";
 let myPhoto = localStorage.getItem('panditPhoto') || "";
 const DATA = {
  "2026-11-28":{tithi:"पंचमी 27:57 प नं - षष्ठी",var:"शनिवार",nak:"पुनर्वसू 12:50 प नं - पुष्य",yog:"शुक्ल 20:18 प नं - ब्रह्म",karan:"कौलव 17:15 प नं - तैतिल",chandra:"मिथुन",surya:"वृश्चिक",guru:"सिंह",agni:"27:57 पर्यंत",special:"शनिवार - शनि पूजन",sunrise:"06:53",sunset:"17:59",moon:"21:58"},
@@ -120,35 +117,23 @@ const DATA = {
 };
 const RAHU = {0:"04:30 - 06:00",1:"07:30 - 09:00",2:"03:00 - 04:30",3:"12:00 - 01:30",4:"01:30 - 03:00",5:"11:02 - 12:25",6:"09:31 ते 11:03"};
 
-// PHOTO LOGIC
+function applyPhoto(){
+  if(!myPhoto) return;
+  document.getElementById('mainPhoto').src = myPhoto;
+  document.getElementById('footerPhotoImg').src = myPhoto;
+}
 document.getElementById('photoInput').addEventListener('change', function(e){
   let file = e.target.files[0]; if(!file) return;
   let reader = new FileReader();
   reader.onload = function(ev){
     myPhoto = ev.target.result;
     try{ localStorage.setItem('panditPhoto', myPhoto); }catch(err){}
-    showMyPhoto();
-    document.getElementById('photoStatus').innerText = "✅ Tumcha photo save zala! Aata poster madhe tumcha photo disel.";
+    applyPhoto();
+    document.getElementById('photoStatus').innerText = "✅ Tumcha photo save zala! Motha photo + Pandit navachya bajula disat ahe.";
   };
   reader.readAsDataURL(file);
 });
-function showDeity(){
-  document.getElementById('mainPhoto').src = DEITY_URL;
-  document.getElementById('panditBadge').style.display = myPhoto ? 'block' : 'none';
-  if(myPhoto) document.getElementById('panditImg').src = myPhoto;
-  document.getElementById('photoStatus').innerText = "Sadhya: Chintamani Photo (motha) + Tumcha Photo (khalil gol) disat ahe.";
-}
-function showMyPhoto(){
-  if(!myPhoto){ alert("Adhi PHOTO SELECT KARA"); return; }
-  document.getElementById('mainPhoto').src = myPhoto;
-  document.getElementById('panditBadge').style.display = 'none';
-  document.getElementById('photoStatus').innerText = "✅ Aata motha photo tumcha ahe!";
-}
-if(myPhoto){
-  document.getElementById('panditImg').src = myPhoto;
-  document.getElementById('panditBadge').style.display = 'block';
-  document.getElementById('photoStatus').innerText = "✅ Tumcha photo aadhich save ahe. Chintamani sobat khalil gol madhe disel.";
-}
+if(myPhoto){ applyPhoto(); document.getElementById('photoStatus').innerText = "✅ Tumcha photo aadhich save ahe."; }
 
 function update(){
   let d = document.getElementById('dateInput').value || "2026-11-28";
