@@ -3,137 +3,150 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daily Panchang Poster</title>
+<title>Dagdusheth Royal Panchang - Shani Maharaj</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif}
-body{background:#f0e6d2;padding:12px;padding-bottom:30px}
+body{background:#e8dcc0;padding:12px;padding-bottom:30px}
 .topbar{text-align:center;margin-bottom:10px}
-.topbar h2{font-size:20px;color:#7a1f1f}
-.controls{background:#fff;padding:12px;border-radius:12px;display:flex;gap:8px;flex-wrap:wrap;justify-content:center;box-shadow:0 2px 10px #0001;margin-bottom:12px}
-.controls input{padding:9px;border:1px solid #ddd;border-radius:8px;font-size:14px;width:150px}
+.topbar h2{color:#6b0f0f}
+.controls{background:#fff;padding:12px;border-radius:12px;display:flex;gap:8px;flex-wrap:wrap;justify-content:center;box-shadow:0 2px 10px #0002;margin-bottom:12px}
+.controls input{padding:9px;border:1px solid #ddd;border-radius:8px;font-size:14px;width:145px}
 .controls button{padding:10px 16px;border:none;border-radius:8px;font-weight:700;cursor:pointer}
 .btn-down{background:#1a7a2e;color:#fff}
-.btn-today{background:#7a1f1f;color:#fff}
-#poster{width:100%;max-width:480px;margin:0 auto;background:#fff8e7;border:3px solid #c9a227;border-radius:16px;overflow:hidden;box-shadow:0 8px 25px #0002}
-.poster-head{background:linear-gradient(135deg,#7a1f1f,#b03a2e);color:#fff;text-align:center;padding:14px 10px 8px}
-.poster-head h1{font-size:22px}
-.poster-head p{font-size:12px;opacity:.9;margin-top:3px}
-.god-box{position:relative;height:280px;background:#222;overflow:hidden}
-.god-box img{width:100%;height:100%;object-fit:cover;display:block}
-.god-fallback{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff}
-.god-fallback .big{font-size:90px}
-.god-fallback h2{font-size:24px;margin-top:8px}
-.god-name-bar{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,.85));color:#fff;padding:20px 12px 10px;text-align:center;z-index:2}
-.god-name-bar b{font-size:19px}
-.god-name-bar span{font-size:12px;display:block;opacity:.9}
-.date-strip{background:#c9a227;color:#3a2400;text-align:center;padding:9px;font-weight:800;font-size:16px}
-.grid{display:grid;grid-template-columns:1fr 1fr}
-.cell{padding:11px 12px;border-bottom:1px dashed #e6c87a}
-.cell:nth-child(odd){border-right:1px dashed #e6c87a}
-.cell small{font-size:11px;color:#8a6d00;text-transform:uppercase}
-.cell b{font-size:15px;color:#222;display:block;margin-top:2px;line-height:1.3}
-.full{grid-column:span 2;background:#fff3c4;text-align:center}
-.full b{font-size:15px;color:#7a1f1f}
-.rahukal{background:#ffe8e8;text-align:center;padding:10px;font-size:13px;color:#7a1f1f}
-.footer{background:#7a1f1f;color:#fff;text-align:center;padding:12px 8px}
-.footer b{color:#ffdd66;font-size:15px}
-.footer p{font-size:13px;margin-top:3px}
+.btn-today{background:#6b0f0f;color:#fff}
+.btn-wa{background:#25D366;color:#fff}
+/* POSTER - DAGDUSHETH ROYAL FRAME */
+#poster{width:100%;max-width:480px;margin:0 auto;background:#fdf6e3;background-image:radial-gradient(#e8d5a0 1px, transparent 1px);background-size:22px 22px;border:4px solid #c9a227;outline:2px solid #8a6d00;outline-offset:-10px;overflow:hidden;box-shadow:0 10px 30px #0003}
+.header{background:linear-gradient(135deg,#6b0f0f,#9a1a1a,#6b0f0f);color:#ffe9a8;text-align:center;padding:14px 12px 10px;border-bottom:3px solid #c9a227}
+.header h1{font-size:22px;line-height:1.3;text-shadow:0 2px 4px #000}
+.header h2{font-size:20px;margin-top:4px;color:#fff}
+.header p{font-size:11px;color:#ffdd99;margin-top:5px;line-height:1.4}
+.frame-wrap{padding:16px 22px 10px;text-align:center}
+.gold-frame{border:6px solid #c9a227;outline:3px solid #8a6d00;outline-offset:2px;border-radius:8px;overflow:hidden;height:300px;background:#222;box-shadow:0 6px 20px #0004}
+.gold-frame img{width:100%;height:100%;object-fit:cover}
+.god-label{margin-top:8px;font-weight:800;color:#6b0f0f;font-size:16px}
+.sunbar{background:#4a0000;color:#ffe9a8;display:flex;justify-content:space-around;padding:10px 6px;margin:0 14px;border:2px solid #c9a227;border-radius:10px;font-size:13px;font-weight:700}
+.main{display:grid;grid-template-columns:1.35fr 1fr;gap:10px;padding:12px 14px}
+.left{display:flex;flex-direction:column;gap:9px}
+.row{background:#4a0000;color:#fff;border-radius:25px;padding:10px 12px;display:flex;align-items:center;gap:8px;border:1px solid #c9a227}
+.row b{color:#ffe9a8;font-size:15px;min-width:42px}
+.row span{font-size:13px;line-height:1.3}
+.right{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.box{background:#4a0000;color:#fff;border-radius:10px;padding:10px 6px;text-align:center;border:1px solid #c9a227;display:flex;flex-direction:column;justify-content:center}
+.box small{font-size:13px;color:#ffe9a8}
+.box b{font-size:17px;margin-top:6px}
+.vishesh{margin:0 14px 14px;background:#4a0000;color:#ffe9a8;text-align:center;padding:12px;border:2px solid #c9a227;border-radius:10px;font-size:18px;font-weight:800}
+.vishesh span{color:#fff;font-size:15px;display:block;margin-top:2px;font-weight:600}
+.footer{background:#6b0f0f;color:#fff;text-align:center;padding:10px;font-size:12px}
+.footer b{color:#ffdd66}
 </style>
 </head>
 <body>
-<div class="topbar"><h2>🕉️ Daily Panchang Poster Maker</h2><p>Photo aata tumchya repo madhun yeil</p></div>
+<div class="topbar"><h2>🕉️ Dagdusheth Royal Poster Maker</h2><p>Shani Maharaj Special - 28-11-2026</p></div>
 <div class="controls">
   <input type="date" id="dateInput">
-  <input type="text" id="nameInput" value="Sushant Joshi" placeholder="Tumche Nav">
-  <input type="text" id="mobileInput" value="98765 43210" placeholder="Mobile Number">
+  <input type="text" id="nameInput" value="Sushant Joshi" placeholder="Nav">
+  <input type="text" id="mobileInput" value="9075387693" placeholder="Mobile">
+  <input type="text" id="addrInput" value="Maharashtra" placeholder="Patta">
   <button class="btn-today" onclick="setToday()">Aajchi Tarikh</button>
   <button class="btn-down" onclick="downloadPoster()">⬇️ POSTER DOWNLOAD</button>
+  <button class="btn-wa" onclick="copyWhatsApp()">📋 WhatsApp Copy</button>
 </div>
+
 <div id="poster">
-  <div class="poster-head"><h1>॥ श्री पंचांग ॥</h1><p>दैनिक पंचांग • शुभ मुहूर्त • व्रत वैकल्य</p></div>
-  <div class="god-box" id="godBox">
-    <img id="god-image" src="" alt="Deity">
-    <div class="god-fallback" id="godFallback" style="display:none"><div class="big" id="godEmoji">🌸</div><h2 id="fallbackName">...</h2></div>
-    <div class="god-name-bar"><b id="deity-name">...</b><span id="day-title">...</span></div>
+  <div class="header">
+    <h1>॥ श्री शनि महाराज ॥</h1>
+    <h2>🪔 दैनिक पंचांग <span id="hDate">२८-११-२०२६</span> 🪔</h2>
+    <p>श्रीमन् शालिवाहन शके १९४८ • पराभव नाम संवत्सर • दक्षिणायन • सौर हेमंत ऋतू • कार्तिक मास • कृष्ण पक्ष</p>
   </div>
-  <div class="date-strip" id="dateStrip">...</div>
-  <div class="grid">
-    <div class="cell"><small>🌅 Suryoday</small><b>06:48 AM</b></div>
-    <div class="cell"><small>🌇 Suryast</small><b>06:12 PM</b></div>
-    <div class="cell"><small>🌙 Tithi</small><b id="vTithi">-</b></div>
-    <div class="cell"><small>⭐ Nakshatra</small><b id="vNakshatra">-</b></div>
-    <div class="cell"><small>🧘 Yog</small><b id="vYog">-</b></div>
-    <div class="cell"><small>📿 Karan</small><b id="vKaran">-</b></div>
-    <div class="cell"><small>🕐 Rahukal</small><b id="vRahu">-</b></div>
-    <div class="cell"><small>✅ Abhijit Muhurat</small><b>12:00 - 12:45 PM</b></div>
-    <div class="cell full"><small>🕉️ Aajcha Vishes</small><b id="vSpecial">-</b></div>
+  <div class="frame-wrap">
+    <div class="gold-frame"><img id="god-image" src="https://images.unsplash.com/photo-1604608672516-f1b9e1a5e4c7?w=800&q=80" alt="Shani Maharaj"></div>
+    <div class="god-label" id="godLabel">ॐ शं शनैश्चराय नमः • Shanivar</div>
   </div>
-  <div class="rahukal">⚠️ <b>Rahukal madhe Shubh Karya Tala</b> • Gulika: <b id="vGulika">-</b></div>
-  <div class="footer"><b>purohit <span id="footerName">Sushant Joshi</span></b><p>📞 <span id="footerMobile">98765 43210</span> • Navi Mumbai</p></div>
+  <div class="sunbar">
+    <span>☀️ सूर्योदय: <span id="vSunrise">06:53</span></span>
+    <span>🌇 सूर्यास्त: <span id="vSunset">17:59</span></span>
+    <span>🌙 चंद्रोदय: <span id="vMoonrise">21:58</span></span>
+  </div>
+  <div class="main">
+    <div class="left">
+      <div class="row"><b>तिथी</b><span id="vTithi">पंचमी 27:57 प नं - षष्ठी</span></div>
+      <div class="row"><b>वार</b><span id="vVar">शनिवार राहूकाळ : 09:31 ते 11:03</span></div>
+      <div class="row"><b>नक्षत्र</b><span id="vNakshatra">पुनर्वसू 12:50 प नं - पुष्य</span></div>
+      <div class="row"><b>योग</b><span id="vYog">शुक्ल 20:18 प नं - ब्रह्म</span></div>
+      <div class="row"><b>करण</b><span id="vKaran">कौलव 17:15 प नं - तैतिल</span></div>
+    </div>
+    <div class="right">
+      <div class="box"><small>चंद्र राशी:</small><b id="vChandra">मिथुन</b></div>
+      <div class="box"><small>सूर्य राशी:</small><b id="vSuryaR">वृश्चिक</b></div>
+      <div class="box"><small>गुरु राशी:</small><b id="vGuruR">सिंह</b></div>
+      <div class="box"><small>अग्निवास:</small><b>🔥 <span id="vAgni">27:57 पर्यंत</span></b></div>
+    </div>
+  </div>
+  <div class="vishesh">🪔 विशेष : <span id="vSpecial">शनिवार - शनि पूजन</span></div>
+  <div class="footer">शुभेच्छुक • <b><span id="footerName">Sushant Joshi</span></b> • <span id="footerAddr">Maharashtra</span> • 📞 <span id="footerMobile">9075387693</span></div>
 </div>
+
 <script>
-// LOCAL PHOTOS - REPO MADHUN DIRECT
-const dailyDeities = [
-  {day:"Sunday", name:"Lord Surya", marathi:"श्री सूर्य देव", desc:"Ravivar • Surya Namaskar", emoji:"☀️", bg:"linear-gradient(135deg,#ff9a00,#ff5e00)", url:"sunday.jpg"},
-  {day:"Monday", name:"Lord Shiva", marathi:"श्री महादेव", desc:"Somvar • Om Namah Shivay", emoji:"🔱", bg:"linear-gradient(135deg,#1e3a5f,#3a6ea5)", url:"monday.jpg"},
-  {day:"Tuesday", name:"Lord Hanuman", marathi:"श्री हनुमान", desc:"Mangalvar • Jai Bajrangbali", emoji:"🙏", bg:"linear-gradient(135deg,#d32f2f,#ff6f00)", url:"tuesday.jpg"},
-  {day:"Wednesday", name:"Lord Ganesha", marathi:"श्री गणपती बाप्पा", desc:"Budhvar • Vakratunda Mahakaya", emoji:"🐘", bg:"linear-gradient(135deg,#e65100,#ff8f00)", url:"wednesday.jpg"},
-  {day:"Thursday", name:"Lord Vishnu", marathi:"श्री विष्णू / साई बाबा", desc:"Guruvar • Shraddha Saburi", emoji:"🕉️", bg:"linear-gradient(135deg,#5d4037,#8d6e63)", url:"thursday.jpg"},
-  {day:"Friday", name:"Goddess Lakshmi", marathi:"श्री महालक्ष्मी", desc:"Shukravar • Dhan • Samruddhi", emoji:"🌸", bg:"linear-gradient(135deg,#ad1457,#ec407a)", url:"friday.jpg"},
-  {day:"Saturday", name:"Lord Venkateswara", marathi:"श्री व्यंकटेश / शनि देव", desc:"Shanivar • Nyay • Karm", emoji:"⚖️", bg:"linear-gradient(135deg,#212121,#616161)", url:"saturday.jpg"}
+const deities = [
+ {day:"Ravivar", label:"ॐ सूर्याय नमः • Ravivar", url:"https://images.unsplash.com/photo-1502139214982-d0ad755818d8?w=800&q=80", title:"॥ श्री सूर्य देव ॥"},
+ {day:"Somvar", label:"ॐ नमः शिवाय • Somvar", url:"https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=800&q=80", title:"॥ श्री महादेव ॥"},
+ {day:"Mangalvar", label:"जय बजरंगबली • Mangalvar", url:"https://images.unsplash.com/photo-1604608672516-f1b9e1a5e4c7?w=800&q=80", title:"॥ श्री हनुमान ॥"},
+ {day:"Budhvar", label:"वक्रतुंड महाकाय • Budhvar", url:"https://images.unsplash.com/photo-1561361058-c24cecae35ca?w=800&q=80", title:"॥ श्री गणपती बाप्पा ॥"},
+ {day:"Guruvar", label:"श्रद्धा सबुरी • Guruvar", url:"https://images.unsplash.com/photo-1548013146-72479768bada?w=800&q=80", title:"॥ श्री साई बाबा ॥"},
+ {day:"Shukravar", label:"धन • समृद्धी • Shukravar", url:"https://images.unsplash.com/photo-1574610758891-5b809b794e21?w=800&q=80", title:"॥ श्री महालक्ष्मी ॥"},
+ {day:"Shanivar", label:"ॐ शं शनैश्चराय नमः • Shanivar", url:"https://images.unsplash.com/photo-1591389703635-e15a07b842d7?w=800&q=80", title:"॥ श्री शनि महाराज ॥"}
 ];
-const RAHU = {0:"04:30 - 06:00 PM",1:"07:30 - 09:00 AM",2:"03:00 - 04:30 PM",3:"12:00 - 01:30 PM",4:"01:30 - 03:00 PM",5:"10:30 - 12:00 PM",6:"09:00 - 10:30 AM"};
-const GULIKA = {0:"03:00 - 04:30 PM",1:"01:30 - 03:00 PM",2:"12:00 - 01:30 PM",3:"10:30 - 12:00 PM",4:"09:00 - 10:30 AM",5:"07:30 - 09:00 AM",6:"06:00 - 07:30 AM"};
 const DATA = {
- "2026-11-27":{tithi:"Margashirsh Shukla Saptami",nak:"Dhanishta",yog:"Vyatipata",karan:"Vanij",special:"Shukravar - Mahalaxmi Pujan"},
- "2026-11-28":{tithi:"Ashtami",nak:"Shatabhisha",yog:"Variyan",karan:"Bav",special:"Shanivar - Shani Pujan"},
- "2026-11-29":{tithi:"Navami",nak:"P. Bhadrapada",yog:"Parigha",karan:"Kaulav",special:"Ravivar - Surya Pujan"},
- "2026-11-30":{tithi:"Dashami",nak:"U. Bhadrapada",yog:"Shiva",karan:"Gara",special:"Somvar - Mahadev"},
- "2026-12-01":{tithi:"Margashirsh Shukla Ekadashi",nak:"Revati",yog:"Vyatipata",karan:"Vanij",special:"Mokshada Ekadashi • Gita Jayanti"},
- "2026-12-04":{tithi:"Pournima",nak:"Rohini",yog:"Shiva",karan:"Vishti",special:"Pournima • Datta Jayanti"},
- "2026-12-08":{tithi:"Chaturthi",nak:"Pushya",yog:"Shukla",karan:"Vanij",special:"Sankashti Chaturthi"},
- "2026-12-19":{tithi:"Amavasya",nak:"Mula",yog:"Dhriti",karan:"Chatushpad",special:"Margashirsh Amavasya"},
- "2026-12-25":{tithi:"Shashthi",nak:"P. Bhadrapada",yog:"Harshana",karan:"Kaulav",special:"Christmas • Shubh Din"},
- "2026-12-31":{tithi:"Dwadashi",nak:"Rohini",yog:"Shiva",karan:"Bav",special:"Varshacha Shevatcha Divas"}
+ "2026-11-28":{tithi:"पंचमी 27:57 प नं - षष्ठी",var:"शनिवार",nak:"पुनर्वसू 12:50 प नं - पुष्य",yog:"शुक्ल 20:18 प नं - ब्रह्म",karan:"कौलव 17:15 प नं - तैतिल",chandra:"मिथुन",surya:"वृश्चिक",guru:"सिंह",agni:"27:57 पर्यंत",special:"शनिवार - शनि पूजन",sunrise:"06:53",sunset:"17:59",moon:"21:58"},
+ "2026-11-29":{tithi:"षष्ठी 26:30 प नं - सप्तमी",var:"रविवार",nak:"पुष्य 14:20 प नं - आश्लेषा",yog:"ब्रह्म 18:40 प नं - इंद्र",karan:"तैतिल 15:10 प नं - गर",chandra:"कर्क",surya:"वृश्चिक",guru:"सिंह",agni:"26:30 पर्यंत",special:"रविवार - सूर्य पूजन",sunrise:"06:53",sunset:"17:59",moon:"22:30"},
+ "2026-11-30":{tithi:"सप्तमी 25:15 प नं - अष्टमी",var:"सोमवार",nak:"आश्लेषा 16:00 प नं - मघा",yog:"इंद्र 16:50 प नं - वैधृती",karan:"गर 13:20 प नं - वणिज",chandra:"सिंह",surya:"वृश्चिक",guru:"सिंह",agni:"25:15 पर्यंत",special:"सोमवार - महादेव",sunrise:"06:54",sunset:"17:58",moon:"23:15"},
+ "2026-12-01":{tithi:"एकादशी 28:10 प नं - द्वादशी",var:"मंगळवार",nak:"रेवती 22:30 प नं - अश्विनी",yog:"व्यतिपात 23:50 प नं - वरियान",karan:"वणिज 14:00 प नं - विष्टी",chandra:"मीन",surya:"वृश्चिक",guru:"सिंह",agni:"28:10 पर्यंत",special:"मोक्षदा एकादशी • गीता जयंती",sunrise:"06:54",sunset:"17:58",moon:"15:20"},
+ "2026-12-04":{tithi:"पौर्णिमा 24:00 प नं - प्रतिपदा",var:"शुक्रवार",nak:"रोहिणी 21:10 प नं - मृगशीर्ष",yog:"शिव 22:00 प नं - सिद्ध",karan:"विष्टी 12:30 प नं - बव",chandra:"वृषभ",surya:"वृश्चिक",guru:"सिंह",agni:"24:00 पर्यंत",special:"पौर्णिमा • दत्त जयंती",sunrise:"06:56",sunset:"17:58",moon:"18:10"}
 };
+const RAHU = {0:"04:30 - 06:00",1:"07:30 - 09:00",2:"03:00 - 04:30",3:"12:00 - 01:30",4:"01:30 - 03:00",5:"11:02 - 12:25",6:"09:31 ते 11:03"};
 function update(){
-  let d = document.getElementById('dateInput').value || new Date().toISOString().slice(0,10);
-  let dt = new Date(d+'T06:00:00');
-  let idx = dt.getDay();
-  let td = dailyDeities[idx];
-  let img = document.getElementById('god-image');
-  img.src = td.url;
-  img.onerror = function(){ this.style.display='none'; let f=document.getElementById('godFallback'); f.style.display='flex'; f.style.background=td.bg; };
-  img.onload = function(){ this.style.display='block'; document.getElementById('godFallback').style.display='none'; };
-  document.getElementById('godEmoji').innerText = td.emoji;
-  document.getElementById('fallbackName').innerText = td.marathi;
-  document.getElementById('day-title').innerText = td.day + " • " + td.desc;
-  document.getElementById('deity-name').innerText = td.marathi + " • " + td.name;
-  let daysMr = ['Ravivar','Somvar','Mangalvar','Budhvar','Guruvar','Shukravar','Shanivar'];
-  document.getElementById('dateStrip').innerText = dt.toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'}) + ' • ' + daysMr[idx];
-  let info = DATA[d] || {tithi:"Shukla Paksha",nak:"-",yog:"-",karan:"-",special:"Shubh Divas • Shubhechha"};
+  let d = document.getElementById('dateInput').value || "2026-11-28";
+  let dt = new Date(d+'T06:00:00'); let idx = dt.getDay(); let td = deities[idx];
+  document.getElementById('god-image').src = td.url;
+  document.getElementById('godLabel').innerText = td.label;
+  document.querySelector('.header h1').innerText = td.title;
+  document.getElementById('hDate').innerText = dt.toLocaleDateString('en-IN',{day:'2-digit',month:'2-digit',year:'numeric'});
+  let info = DATA[d] || {tithi:"-",var:td.day,nak:"-",yog:"-",karan:"-",chandra:"-",surya:"-",guru:"-",agni:"-",special:"शुभ दिवस",sunrise:"06:52",sunset:"17:59",moon:"20:52"};
   document.getElementById('vTithi').innerText = info.tithi;
+  document.getElementById('vVar').innerHTML = info.var + " राहूकाळ : " + RAHU[idx];
   document.getElementById('vNakshatra').innerText = info.nak;
   document.getElementById('vYog').innerText = info.yog;
   document.getElementById('vKaran').innerText = info.karan;
+  document.getElementById('vChandra').innerText = info.chandra;
+  document.getElementById('vSuryaR').innerText = info.surya;
+  document.getElementById('vGuruR').innerText = info.guru;
+  document.getElementById('vAgni').innerText = info.agni;
   document.getElementById('vSpecial').innerText = info.special;
-  document.getElementById('vRahu').innerText = RAHU[idx];
-  document.getElementById('vGulika').innerText = GULIKA[idx];
+  document.getElementById('vSunrise').innerText = info.sunrise;
+  document.getElementById('vSunset').innerText = info.sunset;
+  document.getElementById('vMoonrise').innerText = info.moon;
   document.getElementById('footerName').innerText = document.getElementById('nameInput').value || "Sushant Joshi";
-  document.getElementById('footerMobile').innerText = document.getElementById('mobileInput').value || "";
+  document.getElementById('footerMobile').innerText = document.getElementById('mobileInput').value || "9075387693";
+  document.getElementById('footerAddr').innerText = document.getElementById('addrInput').value || "Maharashtra";
 }
 function setToday(){ document.getElementById('dateInput').value = new Date().toISOString().slice(0,10); update(); }
 function downloadPoster(){
   let btn=document.querySelector('.btn-down'); btn.innerText='Downloading...';
-  html2canvas(document.getElementById('poster'),{scale:2,useCORS:true,allowTaint:true}).then(canvas=>{
+  html2canvas(document.getElementById('poster'),{scale:2,useCORS:true}).then(canvas=>{
     let a=document.createElement('a'); a.download='Panchang-'+document.getElementById('dateInput').value+'.png'; a.href=canvas.toDataURL('image/png'); a.click(); btn.innerText='⬇️ POSTER DOWNLOAD';
   });
+}
+function copyWhatsApp(){
+  let txt="॥ शुभं भवतु ॥ आजचा दिवस मंगलमय होवो! ✨\n\n🙏 ॐ शं शनैश्चराय नमः\n\nदैनिक पंचांग - "+document.getElementById('dateInput').value+" , "+document.getElementById('vVar').innerText+"\n🌅 "+document.getElementById('vSunrise').innerText+" | 🌇 "+document.getElementById('vSunset').innerText+"\nतिथी: "+document.getElementById('vTithi').innerText+"\n\n"+document.getElementById('nameInput').value+" • "+document.getElementById('mobileInput').value;
+  navigator.clipboard.writeText(txt).then(()=>alert("WhatsApp Text Copy Zala!"));
 }
 document.getElementById('dateInput').addEventListener('change',update);
 document.getElementById('nameInput').addEventListener('input',update);
 document.getElementById('mobileInput').addEventListener('input',update);
-document.getElementById('dateInput').value = new Date().toISOString().slice(0,10);
+document.getElementById('addrInput').addEventListener('input',update);
+document.getElementById('dateInput').value = "2026-11-28";
 update();
 </script>
 </body>
