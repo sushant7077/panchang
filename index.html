@@ -21,6 +21,7 @@ body{background:#e8dcc0;padding:12px;padding-bottom:30px}
 .photo-box p{font-size:12px;color:#666;margin-top:6px}
 .photo-box input{display:none}
 .photo-btn{display:inline-block;background:#ff9800;color:#fff;padding:11px 20px;border-radius:8px;font-weight:700;cursor:pointer;font-size:15px}
+.theme-info{text-align:center;background:#fff;padding:8px;border-radius:8px;margin-bottom:12px;font-weight:700;color:#6b0f0f;font-size:14px}
 #poster{width:100%;max-width:480px;margin:0 auto;background:#fdf6e3;background-image:radial-gradient(#e8d5a0 1px, transparent 1px);background-size:22px 22px;border:4px solid #c9a227;outline:2px solid #8a6d00;outline-offset:-10px;overflow:hidden;box-shadow:0 10px 30px #0003}
 .header{background:linear-gradient(135deg,#6b0f0f,#9a1a1a,#6b0f0f);color:#ffe9a8;text-align:center;padding:14px 12px 10px;border-bottom:3px solid #c9a227}
 .header h1{font-size:22px}
@@ -50,7 +51,7 @@ body{background:#e8dcc0;padding:12px;padding-bottom:30px}
 </style>
 </head>
 <body>
-<div class="topbar"><h2>🕉️ Panchang Maker</h2><p>Main Fix + Khali Tumcha Photo</p></div>
+<div class="topbar"><h2>🕉️ Panchang Maker</h2><p>Main FIX Photo + Daily Color</p></div>
 
 <div class="photo-box">
   <h3>📸 Khali Pandit Navachya Bajula Photo Lawa</h3>
@@ -58,6 +59,8 @@ body{background:#e8dcc0;padding:12px;padding-bottom:30px}
   <input type="file" id="photoInput" accept="image/*">
   <p id="photoStatus">Var cha motha Chintamani photo FIX rahil. Fakt khalcha photo badalel.</p>
 </div>
+
+<div class="theme-info" id="themeInfo">🎨 Aajcha Theme: Loading...</div>
 
 <div class="controls">
   <input type="date" id="dateInput">
@@ -70,44 +73,69 @@ body{background:#e8dcc0;padding:12px;padding-bottom:30px}
 </div>
 
 <div id="poster">
-  <div class="header">
+  <div class="header" id="pHeader">
     <h1>॥ श्री चिंतामणी ॥</h1>
     <h2>🪔 दैनिक पंचांग <span id="hDate">२८-११-२०२६</span> 🪔</h2>
     <p>श्रीमन् शालिवाहन शके १९४८ • पराभव नाम संवत्सर • दक्षिणायन • सौर हेमंत ऋतू • कार्तिक मास • कृष्ण पक्ष</p>
   </div>
   <div class="frame-wrap">
-    <!-- MAIN FIX PHOTO - KADHIHI BADALNAR NAHI -->
-    <div class="gold-frame"><img id="mainPhoto" src="https://images.unsplash.com/photo-1561361058-c24cecae35ca?w=800&q=80" alt="Chintamani"></div>
+    <!-- MAIN FIX PHOTO -->
+    <div class="gold-frame" id="goldFrame"><img id="mainPhoto" src="https://images.unsplash.com/photo-1561361058-c24cecae35ca?w=800&q=80" alt="Chintamani"></div>
   </div>
-  <div class="sunbar">
+  <div class="sunbar" id="pSunbar">
     <span>☀️ सूर्योदय: <span id="vSunrise">06:53</span></span>
     <span>🌇 सूर्यास्त: <span id="vSunset">17:59</span></span>
     <span>🌙 चंद्रोदय: <span id="vMoonrise">21:58</span></span>
   </div>
   <div class="main">
     <div class="left">
-      <div class="row"><b>तिथी</b><span id="vTithi">पंचमी 27:57 प नं - षष्ठी</span></div>
-      <div class="row"><b>वार</b><span id="vVar">शनिवार राहूकाळ : 09:31 ते 11:03</span></div>
-      <div class="row"><b>नक्षत्र</b><span id="vNakshatra">पुनर्वसू 12:50 प नं - पुष्य</span></div>
-      <div class="row"><b>योग</b><span id="vYog">शुक्ल 20:18 प नं - ब्रह्म</span></div>
-      <div class="row"><b>करण</b><span id="vKaran">कौलव 17:15 प नं - तैतिल</span></div>
+      <div class="row theme-row"><b>तिथी</b><span id="vTithi">पंचमी 27:57 प नं - षष्ठी</span></div>
+      <div class="row theme-row"><b>वार</b><span id="vVar">शनिवार राहूकाळ : 09:31 ते 11:03</span></div>
+      <div class="row theme-row"><b>नक्षत्र</b><span id="vNakshatra">पुनर्वसू 12:50 प नं - पुष्य</span></div>
+      <div class="row theme-row"><b>योग</b><span id="vYog">शुक्ल 20:18 प नं - ब्रह्म</span></div>
+      <div class="row theme-row"><b>करण</b><span id="vKaran">कौलव 17:15 प नं - तैतिल</span></div>
     </div>
     <div class="right">
-      <div class="box"><small>चंद्र राशी:</small><b id="vChandra">मिथुन</b></div>
-      <div class="box"><small>सूर्य राशी:</small><b id="vSuryaR">वृश्चिक</b></div>
-      <div class="box"><small>गुरु राशी:</small><b id="vGuruR">सिंह</b></div>
-      <div class="box"><small>अग्निवास:</small><b>🔥 <span id="vAgni">27:57 पर्यंत</span></b></div>
+      <div class="box theme-box"><small>चंद्र राशी:</small><b id="vChandra">मिथुन</b></div>
+      <div class="box theme-box"><small>सूर्य राशी:</small><b id="vSuryaR">वृश्चिक</b></div>
+      <div class="box theme-box"><small>गुरु राशी:</small><b id="vGuruR">सिंह</b></div>
+      <div class="box theme-box"><small>अग्निवास:</small><b>🔥 <span id="vAgni">27:57 पर्यंत</span></b></div>
     </div>
   </div>
-  <div class="vishesh">🪔 विशेष : <span id="vSpecial">शनिवार - शनि पूजन</span></div>
-  <div class="footer">
-    <div class="footer-photo"><img id="footerPhotoImg" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80"></div>
+  <div class="vishesh theme-row" id="pVishesh">🪔 विशेष : <span id="vSpecial">शनिवार - शनि पूजन</span></div>
+  <div class="footer" id="pFooter">
+    <div class="footer-photo" id="footerPhotoBorder"><img id="footerPhotoImg" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80"></div>
     <div class="footer-text"><b>पंडित <span id="footerName">Sushant Joshi</span></b><br><span>पत्ता :- <span id="footerAddr">Maharashtra</span> • 📞 <span id="footerMobile">9075387693</span></span></div>
   </div>
 </div>
 
 <script>
 let myPhoto = localStorage.getItem('panditPhoto') || "";
+
+// DAILY THEME - 7 DIVAS 7 COLOR
+const THEMES = {
+  0: {name:"रविवार - Lal + Sona 🔴", header:"#8B0000,#D32F2F,#8B0000", main:"#8B0000", accent:"#FFD700", bg:"#FFF5E1", text:"#FFD700"},
+  1: {name:"सोमवार - Pandhara + Lal ⚪", header:"#4A0000,#6B0F0F,#4A0000", main:"#4A0000", accent:"#FFFFFF", bg:"#FFF8F0", text:"#FFE9A8"},
+  2: {name:"मंगळवार - Kesari + Lal 🟠", header:"#E65100,#FF6D00,#E65100", main:"#BF360C", accent:"#FFCC80", bg:"#FFF3E0", text:"#FFCC80"},
+  3: {name:"बुधवार - Hirva + Pivla 🟢", header:"#1B5E20,#2E7D32,#1B5E20", main:"#1B5E20", accent:"#C6FF00", bg:"#F1F8E9", text:"#C6FF00"},
+  4: {name:"गुरूवार - Pivla + Kesari 🟡", header:"#F9A825,#FF8F00,#F9A825", main:"#7B1E1E", accent:"#FFD600", bg:"#FFFDE7", text:"#FFE082"},
+  5: {name:"शुक्रवार - Gulabi + Lal 🩷", header:"#AD1457,#EC407A,#AD1457", main:"#880E4F", accent:"#F8BBD0", bg:"#FCE4EC", text:"#F8BBD0"},
+  6: {name:"शनिवार - Navy + Sona 🔵", header:"#0D1B4C,#1A237E,#0D1B4C", main:"#0D1B4C", accent:"#FFD700", bg:"#E8EAF6", text:"#FFD700"}
+};
+function applyTheme(dayIdx){
+  let t = THEMES[dayIdx];
+  document.getElementById('themeInfo').innerText = "🎨 Aajcha Theme: " + t.name;
+  document.getElementById('pHeader').style.background = `linear-gradient(135deg,${t.header})`;
+  document.getElementById('pFooter').style.background = t.main;
+  document.getElementById('pSunbar').style.background = t.main;
+  document.getElementById('pVishesh').style.background = t.main;
+  document.querySelectorAll('.theme-row').forEach(el=>{ el.style.background = t.main; });
+  document.querySelectorAll('.theme-box').forEach(el=>{ el.style.background = t.main; });
+  document.getElementById('poster').style.borderColor = t.accent;
+  document.getElementById('goldFrame').style.borderColor = t.accent;
+  document.getElementById('poster').style.background = t.bg;
+}
+
 const DATA = {
  "2026-11-28":{tithi:"पंचमी 27:57 प नं - षष्ठी",var:"शनिवार",nak:"पुनर्वसू 12:50 प नं - पुष्य",yog:"शुक्ल 20:18 प नं - ब्रह्म",karan:"कौलव 17:15 प नं - तैतिल",chandra:"मिथुन",surya:"वृश्चिक",guru:"सिंह",agni:"27:57 पर्यंत",special:"शनिवार - शनि पूजन",sunrise:"06:53",sunset:"17:59",moon:"21:58"},
  "2026-11-29":{tithi:"षष्ठी 26:30 प नं - सप्तमी",var:"रविवार",nak:"पुष्य 14:20 प नं - आश्लेषा",yog:"ब्रह्म 18:40 प नं - इंद्र",karan:"तैतिल 15:10 प नं - गर",chandra:"कर्क",surya:"वृश्चिक",guru:"सिंह",agni:"26:30 पर्यंत",special:"रविवार - सूर्य पूजन",sunrise:"06:53",sunset:"17:59",moon:"22:30"},
@@ -119,7 +147,6 @@ const RAHU = {0:"04:30 - 06:00",1:"07:30 - 09:00",2:"03:00 - 04:30",3:"12:00 - 0
 
 function applyPhoto(){
   if(!myPhoto) return;
-  // FAKT KHALCHA PHOTO BADALEL - MAIN PHOTO FIX RAHIL
   document.getElementById('footerPhotoImg').src = myPhoto;
 }
 document.getElementById('photoInput').addEventListener('change', function(e){
@@ -138,6 +165,7 @@ if(myPhoto){ applyPhoto(); document.getElementById('photoStatus').innerText = "�
 function update(){
   let d = document.getElementById('dateInput').value || "2026-11-28";
   let dt = new Date(d+'T06:00:00'); let idx = dt.getDay();
+  applyTheme(idx);
   document.getElementById('hDate').innerText = dt.toLocaleDateString('en-IN',{day:'2-digit',month:'2-digit',year:'numeric'});
   let info = DATA[d] || {tithi:"-",var:"-",nak:"-",yog:"-",karan:"-",chandra:"-",surya:"-",guru:"-",agni:"-",special:"शुभ दिवस",sunrise:"06:52",sunset:"17:59",moon:"20:52"};
   document.getElementById('vTithi').innerText = info.tithi;
